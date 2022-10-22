@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TaskHistoryRoute extends StatefulWidget {
@@ -13,7 +12,7 @@ class _TaskHistoryRouteState extends State<TaskHistoryRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Categorias'),
+        title: const Text('Histórico de Tarefas'),
       ),
       body: Container(),
     );

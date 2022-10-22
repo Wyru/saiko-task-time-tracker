@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:saikottt/Categories/Categories.dart';
-import 'package:saikottt/TaskHistory/TaskHistory.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -10,15 +8,9 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  int currentOption = 0;
-
   @override
   void initState() {
     super.initState();
-    // TODO: implement initState
-    setState(() {
-      currentOption = 0;
-    });
   }
 
   @override
@@ -45,11 +37,8 @@ class _MyDrawerState extends State<MyDrawer> {
           leading: const Icon(Icons.task),
           title: const Text('Executar Tarefa'),
           selectedColor: selectedColor,
-          selected: currentOption == 0,
+          selected: true,
           onTap: () {
-            setState(() {
-              currentOption = 0;
-            });
             Navigator.of(context).popUntil(ModalRoute.withName('/'));
           },
         ),
@@ -57,25 +46,16 @@ class _MyDrawerState extends State<MyDrawer> {
           leading: const Icon(Icons.list),
           title: const Text('Histórico de Tarefas'),
           selectedColor: selectedColor,
-          selected: currentOption == 1,
           onTap: () {
-            setState(() {
-              currentOption = 1;
-            });
-            Navigator.pushNamed(context, '/taskHistory');
+            Navigator.popAndPushNamed(context, '/taskHistory');
           },
         ),
         ListTile(
           leading: const Icon(Icons.tag),
           title: const Text('Categorias'),
           selectedColor: selectedColor,
-          selected: currentOption == 2,
           onTap: () {
-            setState(() {
-              currentOption = 2;
-            });
-
-            Navigator.pushNamed(context, '/categories');
+            Navigator.popAndPushNamed(context, '/categories');
           },
         ),
         ListTile(
