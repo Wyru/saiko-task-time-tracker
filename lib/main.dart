@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:saikottt/Categories/Categories.dart';
 import 'package:saikottt/Home/home.dart';
+import 'package:saikottt/TaskHistory/TaskHistory.dart';
 
 void main() {
-  runApp(const MaterialApp(home: SaikoTTT()));
+  runApp(MaterialApp(initialRoute: '/', routes: {
+    '/': (context) => const SaikoTTT(),
+    '/categories': (context) => const CategoriesRoute(),
+    '/taskHistory': (context) => const TaskHistoryRoute(),
+  }));
 }
 
 class SaikoTTT extends StatelessWidget {
