@@ -1,4 +1,4 @@
-# Saiko Task Time Tracker
+# maind Task Time Tracker
 
 Meu projeto pessoal para uma aplicação escrita em fluter, com foco em desktop,
 tracking de atividades.

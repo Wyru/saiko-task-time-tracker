@@ -1,38 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:saikottt/Categories/Categories.dart';
-import 'package:saikottt/Home/home.dart';
-import 'package:saikottt/TaskHistory/TaskHistory.dart';
+import 'package:provider/provider.dart';
+import 'package:maindttt/app/Categories/Categories.dart';
+import 'package:maindttt/app/Home/Home.dart';
+import 'package:maindttt/app/TaskHistory/TaskHistory.dart';
+import 'package:maindttt/data/DataAccessProvider.dart';
 
 void main() {
-  runApp(MaterialApp(initialRoute: '/', routes: {
-    '/': (context) => const SaikoTTT(),
-    '/categories': (context) => const CategoriesRoute(),
-    '/taskHistory': (context) => const TaskHistoryRoute(),
-  }));
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(MultiProvider(
+    providers: [
+      Provider<DataAccessProvider>(create: (_) => DataAccessProvider.instance)
+    ],
+    child: MaterialApp(initialRoute: '/', routes: {
+      '/': (context) => const maindTTT(),
+      '/categories': (context) => const CategoriesRoute(),
+      '/taskHistory': (context) => const TaskHistoryRoute(),
+    }),
+  ));
 }
 
-class SaikoTTT extends StatelessWidget {
-  const SaikoTTT({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(child: Screen());
-  }
-}
-
-class Screen extends StatefulWidget {
-  const Screen({super.key});
-
-  @override
-  State<Screen> createState() => _ScreenState();
-}
-
-class _ScreenState extends State<Screen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+class maindTTT extends StatelessWidget {
+  const maindTTT({super.key});
 
   @override
   Widget build(BuildContext context) {

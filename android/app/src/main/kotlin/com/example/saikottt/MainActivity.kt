@@ -1,4 +1,4 @@
-package com.example.saikottt
+package com.example.maindttt
 
 import io.flutter.embedding.android.FlutterActivity
 
