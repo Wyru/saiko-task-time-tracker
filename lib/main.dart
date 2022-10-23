@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:maindttt/app/Categories/Categories.dart';
-import 'package:maindttt/app/Home/Home.dart';
-import 'package:maindttt/app/TaskHistory/TaskHistory.dart';
-import 'package:maindttt/data/DataAccessProvider.dart';
+import 'package:maidttt/app/Categories/Categories.dart';
+import 'package:maidttt/app/Home/Home.dart';
+import 'package:maidttt/app/TaskHistory/TaskHistory.dart';
+import 'package:maidttt/data/DataAccessProvider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,15 +13,15 @@ void main() {
       Provider<DataAccessProvider>(create: (_) => DataAccessProvider.instance)
     ],
     child: MaterialApp(initialRoute: '/', routes: {
-      '/': (context) => const maindTTT(),
+      '/': (context) => const maidTTT(),
       '/categories': (context) => const CategoriesRoute(),
       '/taskHistory': (context) => const TaskHistoryRoute(),
     }),
   ));
 }
 
-class maindTTT extends StatelessWidget {
-  const maindTTT({super.key});
+class maidTTT extends StatelessWidget {
+  const maidTTT({super.key});
 
   @override
   Widget build(BuildContext context) {

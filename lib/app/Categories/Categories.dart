@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
-import 'package:maindttt/data/DataAccessProvider.dart';
-import 'package:maindttt/model/TaskCategory.dart';
+import 'package:maidttt/data/DataAccessProvider.dart';
+import 'package:maidttt/model/TaskCategory.dart';
 
 class CategoriesRoute extends StatefulWidget {
   const CategoriesRoute({super.key});

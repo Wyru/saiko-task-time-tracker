@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:maindttt/model/Task.dart';
-import 'package:maindttt/model/TaskCategory.dart';
+import 'package:maidttt/model/Task.dart';
+import 'package:maidttt/model/TaskCategory.dart';
 
 class DataAccessProvider {
   static final DataAccessProvider instance = DataAccessProvider._();

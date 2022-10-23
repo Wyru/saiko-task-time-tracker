@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:maindttt/app/Drawer/Drawer.dart';
-import 'package:maindttt/data/DataAccessProvider.dart';
-import 'package:maindttt/model/TaskCategory.dart';
+import 'package:maidttt/app/Drawer/Drawer.dart';
+import 'package:maidttt/data/DataAccessProvider.dart';
+import 'package:maidttt/model/TaskCategory.dart';
 
 class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
         ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Executar Tarefa'),
+        title: const Text('Maid Task Time Tracker!'),
       ),
       drawer: const MyDrawer(),
       body: Center(
@@ -47,11 +47,12 @@ class _HomeState extends State<Home> {
                 flex: 1,
               ),
               Flexible(
-                flex: 4,
+                flex: 8,
                 child: TextField(
+                  textAlign: TextAlign.center,
                   controller: taskFieldController,
                   style: const TextStyle(
-                    fontSize: 25.0,
+                    fontSize: 20.0,
                   ),
                   onChanged: (value) {
                     updateButton();
@@ -59,13 +60,13 @@ class _HomeState extends State<Home> {
                   onSubmitted: (value) {
                     updateButton();
                   },
-                  decoration: InputDecoration(
-                    hintText: 'O que você vai fazer, senpai? (^///^)',
+                  decoration: const InputDecoration(
+                    hintText: 'O que você vai fazer, Goshujin-sama? (^///^)',
+                    alignLabelWithHint: true,
                     border: UnderlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                        borderSide: const BorderSide(
-                          width: 4,
-                        )),
+                        borderSide: BorderSide(
+                      width: 4,
+                    )),
                   ),
                 ),
               ),
