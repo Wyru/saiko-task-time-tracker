@@ -1,3 +1,6 @@
+import 'package:maidttt/data/dataAccessProvider.dart';
+import 'package:provider/provider.dart';
+
 class Task {
   String description;
   int categoryId;

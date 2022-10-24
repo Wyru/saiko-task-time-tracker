@@ -17,9 +17,9 @@ deu vontade de aprender algo novo.
 - [x] Criar projeto
 - [x] Entender como separar os widgets em aplicativos
 - [x] Rascunho da aplicação
-- [ ] CRUD Categorias
-- [ ] Criar uma tarefas
-- [ ] Selecionar uma categoria
+- [x] CRD Categorias
+- [x] Criar uma tarefas
+- [x] Selecionar uma categoria
 - [ ] Iniciar a contagem de tempo de uma tarefa
 - [ ] Salvar o tempo utilizando SqlLite
 - [ ] Listar tarefas por intervalo data

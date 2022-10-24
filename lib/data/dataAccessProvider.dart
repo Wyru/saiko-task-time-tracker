@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:maidttt/model/Task.dart';
 import 'package:maidttt/model/TaskCategory.dart';
 
-class DataAccessProvider {
+class DataAccessProvider extends ChangeNotifier {
   static final DataAccessProvider instance = DataAccessProvider._();
 
   List<TaskCategory> categories = [

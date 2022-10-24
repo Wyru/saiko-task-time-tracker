@@ -44,52 +44,90 @@ class _TimeTrackingState extends State<TimeTracking> {
   Widget build(BuildContext context) {
     task = ModalRoute.of(context)!.settings.arguments as Task;
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Hora de focar, Goshujin-sama! (≧∇≦)ﾉ')),
-      body: Column(
-        children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Text(
-                durationText,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 75),
-              ),
-            )
-          ]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: Scaffold(
+        appBar:
+            AppBar(title: const Text('Hora de focar, Goshujin-sama! (≧∇≦)ﾉ')),
+        body: Column(
+          children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: Text(
-                  task?.description ?? 'Não informado!',
+                  durationText,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 75),
                 ),
               )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Ink(
-                decoration: const ShapeDecoration(
-                  color: Colors.blue,
-                  shape: CircleBorder(),
+            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    task?.description ?? 'Não informado!',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Ink(
+                  decoration: const ShapeDecoration(
+                    color: Colors.blue,
+                    shape: CircleBorder(),
+                  ),
+                  child: IconButton(
+                    iconSize: 48,
+                    color: Colors.white,
+                    onPressed: () async {
+                      if (await onWillPop()) {
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    icon: const Icon(Icons.stop),
+                  ),
                 ),
-                child: IconButton(
-                  iconSize: 48,
-                  color: Colors.white,
-                  onPressed: () {},
-                  icon: const Icon(Icons.stop),
-                ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  Future<bool> onWillPop() async {
+    return (await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Tem certeza'),
+            content:
+                const Text('Quer interromper a contagem de tempo da tarefa?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Não'),
+              ),
+              TextButton(
+                onPressed: () {
+                  stopTask(context);
+                  Navigator.of(context).pop(true);
+                },
+                child: const Text('Yes'),
+              ),
+            ],
+          ),
+        )) ??
+        false;
+  }
+
+  void stopTask(context) {
+    task!.end = DateTime.now();
+    oneSecondTimer.cancel();
   }
 }
