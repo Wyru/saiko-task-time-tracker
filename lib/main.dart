@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maidttt/app/TimeTracking/TimeTracking.dart';
 import 'package:provider/provider.dart';
 import 'package:maidttt/app/Categories/Categories.dart';
 import 'package:maidttt/app/Home/Home.dart';
@@ -15,6 +16,7 @@ void main() {
     child: MaterialApp(initialRoute: '/', routes: {
       '/': (context) => const maidTTT(),
       '/categories': (context) => const CategoriesRoute(),
+      '/timeTracking': (context) => const TimeTracking(),
       '/taskHistory': (context) => const TaskHistoryRoute(),
     }),
   ));

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:maidttt/app/TimeTracking/TimeTracking.dart';
+import 'package:maidttt/model/Task.dart';
 import 'package:provider/provider.dart';
 import 'package:maidttt/app/Drawer/Drawer.dart';
 import 'package:maidttt/data/DataAccessProvider.dart';
@@ -115,7 +117,11 @@ class _HomeState extends State<Home> {
                 child: IconButton(
                   iconSize: 48,
                   color: Colors.white,
-                  onPressed: isButtonDisabled ? null : () {},
+                  onPressed: isButtonDisabled
+                      ? null
+                      : () {
+                          createAndStartTask(context);
+                        },
                   icon: const Icon(Icons.play_arrow),
                 ),
               ),
@@ -124,6 +130,15 @@ class _HomeState extends State<Home> {
         ],
       )),
     );
+  }
+
+  void createAndStartTask(context) {
+    Task task = Task(
+      taskFieldController.text,
+      currentCategory?.id ?? -1,
+    );
+
+    Navigator.pushNamed(context, '/timeTracking', arguments: task);
   }
 
   Future<TaskCategory?> _dialogBuilder(BuildContext context) async {
