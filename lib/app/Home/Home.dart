@@ -40,99 +40,112 @@ class _HomeState extends State<Home> {
           title: const Text('Maid Task Time Tracker!'),
         ),
         drawer: const MyDrawer(),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(
-                  flex: 1,
-                ),
-                Flexible(
-                  flex: 8,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: taskFieldController,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                    ),
-                    onChanged: (value) {
-                      updateButton();
-                    },
-                    onSubmitted: (value) {
-                      updateButton();
-                    },
-                    decoration: const InputDecoration(
-                      hintText: 'O que você vai fazer, Goshujin-sama? (^///^)',
-                      alignLabelWithHint: true,
-                      border: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                        width: 4,
-                      )),
-                    ),
-                  ),
-                ),
-                const Spacer(
-                  flex: 1,
-                ),
-              ],
+        body: Container(
+          padding: const EdgeInsets.only(left: 90),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/remMaid.png"),
+              fit: BoxFit.fitHeight,
+              alignment: Alignment.bottomLeft,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: InputChip(
-                      tooltip: "categoria",
-                      avatar: CircleAvatar(
-                        backgroundColor: currentCategory?.color ?? Colors.white,
-                        child: Icon(
-                          currentCategory?.icon ?? Icons.cancel,
-                          color:
-                              currentCategory?.getTextColor() ?? Colors.black,
+          ),
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(
+                    flex: 1,
+                  ),
+                  Flexible(
+                    flex: 8,
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: taskFieldController,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                      ),
+                      onChanged: (value) {
+                        updateButton();
+                      },
+                      onSubmitted: (value) {
+                        updateButton();
+                      },
+                      decoration: const InputDecoration(
+                        hintText:
+                            'O que você vai fazer, Goshujin-sama? (^///^)',
+                        alignLabelWithHint: true,
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            width: 4,
+                          ),
                         ),
                       ),
-                      label: Text(
-                        currentCategory?.name ?? 'Categoria não selecionada!',
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () async {
-                        var category =
-                            await _dialogBuilder(context, dataAccessProvider);
-                        setState(() {
-                          currentCategory = category;
-                        });
-                        updateButton();
-                      }),
-                )
-              ],
-            ),
-            const SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Ink(
-                  decoration: const ShapeDecoration(
-                    color: Colors.blue,
-                    shape: CircleBorder(),
+                    ),
                   ),
-                  child: IconButton(
-                    iconSize: 48,
-                    color: Colors.white,
-                    onPressed: isButtonDisabled
-                        ? null
-                        : () {
-                            createAndStartTask(dataAccessProvider);
-                          },
-                    icon: const Icon(Icons.play_arrow),
+                  const Spacer(
+                    flex: 1,
                   ),
-                ),
-              ],
-            )
-          ],
-        )),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: InputChip(
+                        tooltip: "categoria",
+                        avatar: CircleAvatar(
+                          backgroundColor:
+                              currentCategory?.color ?? Colors.white,
+                          child: Icon(
+                            currentCategory?.icon ?? Icons.cancel,
+                            color:
+                                currentCategory?.getTextColor() ?? Colors.black,
+                          ),
+                        ),
+                        label: Text(
+                          currentCategory?.name ?? 'Categoria não selecionada!',
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () async {
+                          var category =
+                              await _dialogBuilder(context, dataAccessProvider);
+                          setState(() {
+                            currentCategory = category;
+                          });
+                          updateButton();
+                        }),
+                  )
+                ],
+              ),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Ink(
+                    decoration: const ShapeDecoration(
+                      color: Colors.blue,
+                      shape: CircleBorder(),
+                    ),
+                    child: IconButton(
+                      iconSize: 48,
+                      color: Colors.white,
+                      onPressed: isButtonDisabled
+                          ? null
+                          : () {
+                              createAndStartTask(dataAccessProvider);
+                            },
+                      icon: const Icon(Icons.play_arrow),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          )),
+        ),
       ),
     );
   }

@@ -15,4 +15,8 @@ class DataAccessProvider extends ChangeNotifier {
   List<Task> tasks = [];
 
   DataAccessProvider._();
+
+  void notify() {
+    notifyListeners();
+  }
 }

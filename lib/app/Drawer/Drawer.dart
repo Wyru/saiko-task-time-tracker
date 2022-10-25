@@ -21,18 +21,18 @@ class _MyDrawerState extends State<MyDrawer> {
         child: ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        const DrawerHeader(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-          child: Text(
-            'Menu',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
-        ),
+        // const DrawerHeader(
+        //   decoration: BoxDecoration(
+        //     color: Colors.blue,
+        //   ),
+        //   child: Text(
+        //     'Menu',
+        //     style: TextStyle(
+        //       color: Colors.white,
+        //       fontSize: 24,
+        //     ),
+        //   ),
+        // ),
         ListTile(
           leading: const Icon(Icons.task),
           title: const Text('Executar Tarefa'),
